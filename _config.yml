@@ -13,7 +13,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Saya menyediakan jasa pembuatan website yang keren dan murah.
   Anda pasti puas dengan hasil yang saya berikan.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://dotslashweb.github.io/" # the base hostname & protocol for your site
+url: "https://www.dotslashweb.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 

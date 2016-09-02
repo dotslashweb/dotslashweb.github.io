@@ -3,18 +3,33 @@ layout: default
 title: Jasa Pembuatan Website - Download
 ---
 <script type="text/javascript">
-function getFiles(dir){
-    fileList = [];
- 
-    var files = fs.readdirSync(dir);
-    for(var i in files){
-        if (!files.hasOwnProperty(i)) continue;
-        var name = dir+'/'+files[i];
-        if (!fs.statSync(name).isDirectory()){
-            fileList.push(name);
-        }
-    }
-    return fileList;
+
+var location = document.location.href;
+var locPath = location.substring(location.indexOf("C"),location.lastIndexOf("/"));
+
+var thispath = locPath.replace(/\//g,"\\\\");
+var thispath = thispath.replace(/%20/g," ");
+
+var fs = new ActiveXObject("Scripting.FileSystemObject");
+var Folder = fs.GetFolder(thispath);
+var FileCollection = Folder.Files;
+var Files = new Array();
+
+for(var objEnum = new Enumerator(FileCollection); !objEnum.atEnd(); objEnum.moveNext())
+{
+   strFileName = objEnum.item();
+   Files.push(strFileName)
 }
+
+delete objEnum;
+objEnum = null;
+
+FileCollection = null;
+Folder = null;
+
+for(var i = 0; i < Files.length; i++)
+{
+  document.write(Files[i] + "<br />");
+}
+
 </script>
-console.log(getFiles('path/to/dir'));
